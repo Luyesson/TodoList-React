@@ -1,5 +1,8 @@
 import TodoListItem from "./TodoListItem";
-function TodoList({ todos, setTodos }) {
+import { useTodosContext } from "./context/TodosContext";
+
+function TodoList() {
+  const { todos } = useTodosContext();
   return (
     <div
       className="flex flex-1 min-h-0 w-[95%] self-center rounded-2xl 
@@ -30,12 +33,7 @@ function TodoList({ todos, setTodos }) {
         </thead>
         <tbody>
           {todos.map((todo) => (
-            <TodoListItem
-              key={todo.id}
-              setTodos={setTodos}
-              todo={todo}
-              todos={todos}
-            />
+            <TodoListItem key={todo.id} todo={todo} />
           ))}
         </tbody>
       </table>

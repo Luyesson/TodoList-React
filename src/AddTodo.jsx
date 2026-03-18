@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useTodosContext } from "./context/TodosContext";
 
-function AddTodo({ todo, setTodo, handleAddTodo }) {
+function AddTodo() {
+  const { todo, setTodo, handleAddTodo } = useTodosContext();
   return (
     <div style={{ margin: "15px 0 10px 0" }}>
       <fieldset className="fieldset flex justify-center">

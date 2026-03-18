@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useTodosContext } from "./context/TodosContext";
 
-function TodoListItem({ todo, todos, setTodos }) {
+function TodoListItem({ todo }) {
+  const { todos, setTodos } = useTodosContext();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   function toggleTodo(id) {

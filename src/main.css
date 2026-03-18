@@ -19,12 +19,18 @@ html {
 
 .header > .icon {
   margin-right: 15px;
+  position: relative;
+  overflow: visible;
 }
 
 .header-icon-scene {
   width: 4rem;
   height: 4rem;
   perspective: 1000px;
+  overflow: hidden;
+  border-radius: 9999px;
+  font-size: 0;
+  line-height: 0;
 }
 
 .header-icon-card {
@@ -33,6 +39,7 @@ html {
   height: 100%;
   transform-style: preserve-3d;
   animation: header-icon-flip 24s infinite ease-in-out;
+  will-change: transform;
 }
 
 .header-icon-face {
@@ -42,10 +49,30 @@ html {
   align-items: center;
   justify-content: center;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.header-icon-face img {
+  display: block;
 }
 
 .header-icon-face-back {
   transform: rotateY(180deg);
+}
+
+.header-icon-debug-char {
+  left: 0;
+  top: 50%;
+  color: #facc15;
+  transform: translate(-6px, -50%) scale(0.35);
+  transform-origin: center;
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0;
+  z-index: 20;
+  text-shadow: 0 0 6px rgba(250, 204, 21, 0.8);
+  animation: header-icon-debug-char-once 24s infinite linear;
+  animation-delay: -23.28s;
 }
 
 @keyframes header-icon-flip {
@@ -64,6 +91,27 @@ html {
 
   100% {
     transform: rotateY(360deg);
+  }
+}
+
+@keyframes header-icon-debug-char-once {
+  0%,
+  96% {
+    transform: translate(-6px, -50%) scale(0.35);
+    font-size: 12px;
+    opacity: 0;
+  }
+
+  97% {
+    transform: translate(-6px, -50%) scale(0.35);
+    font-size: 24px;
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(-50vw + 24px), -50%) scale(1);
+    font-size: 50px;
+    opacity: 1;
   }
 }
 
