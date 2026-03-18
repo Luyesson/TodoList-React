@@ -1,28 +1,39 @@
 import "./main.css";
 import Header from "./Header";
-import TodoListItem from "./TodoListItem";
+import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
+import Footer from "./Footer";
+import { useState } from "react";
 function App() {
+  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState([
+    { id: 1, todo: "Todo 1", done: false },
+    { id: 2, todo: "Todo 2", done: false },
+    { id: 3, todo: "Todo 3", done: false },
+  ]);
+  function handleAddTodo() {
+    if (todo.trim() === "") {
+      return;
+    }
+    setTodos([
+      ...todos,
+      {
+        id: new Date().getTime(),
+        todo: todo,
+        done: false,
+      },
+    ]);
+    setTodo("");
+  }
   return (
     <div className="min-h-screen flex flex-col">
-      <Header>
-        <h1
-          style={{ display: "inline-block" }}
-          className="text-2xl font-bold text-green-600"
-        >
-          Todo List
-        </h1>
-      </Header>
+      <Header />
       <hr className="text-gray-500" />
-      <main className="flex-1">
-        <AddTodo />
-        <TodoListItem />
+      <main className="flex-1 flex flex-col">
+        <AddTodo todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} />
+        <TodoList todos={todos} setTodos={setTodos} />
       </main>
-      <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
-        <aside>
-          <p>Copyright © {new Date().getFullYear()} - Written by luyus</p>
-        </aside>
-      </footer>
+      <Footer />
     </div>
   );
 }
