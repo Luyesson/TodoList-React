@@ -1,5 +1,5 @@
-import jiyi from "./assets/jiyi.jpg";
-import wusaqi from "./assets/wusaqi.jpg";
+import jiyi from "@/assets/jiyi.jpg";
+import wusaqi from "@/assets/wusaqi.jpg";
 
 function HeaderIcon() {
   const sceneStyle = {

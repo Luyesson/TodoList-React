@@ -1,5 +1,5 @@
-import TodoListItem from "./TodoListItem";
-import { useTodosContext } from "./context/TodosContext";
+import TodoListItem from "@/TodoListItem";
+import { useTodosContext } from "@/context/TodosContext";
 
 function TodoList() {
   const { todos } = useTodosContext();

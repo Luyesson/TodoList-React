@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useTodosContext } from "./context/TodosContext";
-
+import { useTodosContext } from "@/context/TodosContext";
+import DelectConfirm from "@/DelectConfirm";
 function TodoListItem({ todo }) {
   const { todos, setTodos } = useTodosContext();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -50,30 +50,11 @@ function TodoListItem({ todo }) {
           ×
         </button>
         {showDeleteConfirm && (
-          <div className="absolute right-0 top-10 z-10 w-64 rounded-2xl border border-error/20 bg-base-100 p-4 text-left shadow-xl">
-            <p className="text-sm font-semibold text-error">
-              Delete this todo?
-            </p>
-            <p className="mt-1 text-xs text-base-content/70">
-              This action cannot be undone.
-            </p>
-            <div className="mt-3 flex justify-end gap-2">
-              <button
-                type="button"
-                className="btn btn-ghost btn-sm"
-                onClick={() => setShowDeleteConfirm(false)}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="btn btn-error btn-sm text-white"
-                onClick={() => deleteTodo(todo.id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
+          <DelectConfirm
+            setShowDeleteConfirm={setShowDeleteConfirm}
+            deleteTodo={deleteTodo}
+            todo={todo}
+          />
         )}
       </th>
     </tr>

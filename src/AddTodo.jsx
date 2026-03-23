@@ -1,4 +1,4 @@
-import { useTodosContext } from "./context/TodosContext";
+import { useTodosContext } from "@/context/TodosContext";
 
 function AddTodo() {
   const { todo, setTodo, handleAddTodo } = useTodosContext();

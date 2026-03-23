@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useLocalStorage from "./useLocalStorage";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 export default function useTodos() {
   const [todo, setTodo] = useState("");
