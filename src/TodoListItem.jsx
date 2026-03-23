@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTodosContext } from "@/context/TodosContext";
 import DelectConfirm from "@/DelectConfirm";
-function TodoListItem({ todo }) {
+function TodoListItem({ todo, toggleDetails }) {
   const { todos, setTodos } = useTodosContext();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -37,7 +37,10 @@ function TodoListItem({ todo }) {
         {todo.todo}
       </td>
       <td>
-        <button className="btn btn-outline btn-xs text-green-400 text-sm font-bold">
+        <button
+          className="btn btn-outline btn-xs text-green-400 text-sm font-bold"
+          onClick={() => toggleDetails(todo)}
+        >
           details
         </button>
       </td>

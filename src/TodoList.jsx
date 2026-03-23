@@ -1,7 +1,7 @@
 import TodoListItem from "@/TodoListItem";
 import { useTodosContext } from "@/context/TodosContext";
 
-function TodoList() {
+function TodoList({ toggleDetails }) {
   const { todos } = useTodosContext();
   return (
     <div
@@ -33,7 +33,11 @@ function TodoList() {
         </thead>
         <tbody>
           {todos.map((todo) => (
-            <TodoListItem key={todo.id} todo={todo} />
+            <TodoListItem
+              key={todo.id}
+              todo={todo}
+              toggleDetails={toggleDetails}
+            />
           ))}
         </tbody>
       </table>
