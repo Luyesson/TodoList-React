@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useTodosContext } from "@/context/TodosContext";
-import DelectConfirm from "@/DelectConfirm";
+import DelectConfirm from "@/featrue/detailstodo/DelectConfirm";
 function TodoListItem({ todo, toggleDetails }) {
   const { todos, setTodos } = useTodosContext();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   function toggleTodo(id) {
-    const newTodos = todos.map((t) =>
-      t.id === id ? { ...t, done: !t.done } : t,
+    setTodos((prev) =>
+      prev
+        .map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+        .sort((a, b) => a.done - b.done),
     );
-    const sortedTodos = newTodos.sort((a, b) => a.done - b.done);
-    setTodos(sortedTodos);
   }
 
   function deleteTodo(id) {
-    setTodos(todos.filter((t) => t.id !== id));
+    setTodos((prev) => prev.filter((t) => t.id !== id));
     setShowDeleteConfirm(false);
   }
 
@@ -44,7 +44,7 @@ function TodoListItem({ todo, toggleDetails }) {
           details
         </button>
       </td>
-      <th className="relative">
+      <td className="relative">
         <button
           className="btn btn-square size-8"
           type="button"
@@ -59,7 +59,7 @@ function TodoListItem({ todo, toggleDetails }) {
             todo={todo}
           />
         )}
-      </th>
+      </td>
     </tr>
   );
 }

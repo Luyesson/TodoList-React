@@ -1,4 +1,4 @@
-import HeaderIcon from "@/HeaderIcon.jsx";
+import HeaderIcon from "@/ui/HeaderIcon";
 function Header() {
   return (
     <header className="header">

@@ -1,4 +1,4 @@
-import TodoListItem from "@/TodoListItem";
+import TodoListItem from "@/featrue/todolist/TodoListItem";
 import { useTodosContext } from "@/context/TodosContext";
 
 function TodoList({ toggleDetails }) {

@@ -1,12 +1,10 @@
-import "./main.css";
-import Header from "./Header";
-import TodoList from "./TodoList";
-import AddTodo from "./AddTodo";
-import Footer from "./Footer";
-import { useState } from "react";
-import { useTodosContext } from "@/context/TodosContext";
-import DetailsInfo from "./DetailsInfo";
-import useDetails from "./hooks/useDetails";
+import "@/main.css";
+import Header from "@/ui/Header";
+import TodoList from "@/featrue/todolist/TodoList";
+import AddTodo from "@/featrue/addtodo/AddTodo";
+import Footer from "@/ui/Footer";
+import DetailsInfo from "@/featrue/detailstodo/DetailsInfo";
+import useDetails from "@/hooks/useDetails";
 function App() {
   const {
     showDetails,
@@ -41,7 +39,7 @@ function App() {
       {/* 主体-动态内容 */}
       <main className="flex-1 flex flex-col">
         <AddTodo />
-        <TodoList showDetails={showDetails} toggleDetails={toggleDetails} />
+        <TodoList toggleDetails={toggleDetails} />
       </main>
       {/* 底部-静态内容 */}
       <Footer />

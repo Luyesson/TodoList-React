@@ -30,13 +30,14 @@ function useDetails() {
     const todoText = editTodo.trim();
     if (!todoText) return;
 
-    setTodos(
-      todos.map((t) =>
+    setTodos((prev) =>
+      prev.map((t) =>
         t.id === selectedTodo.id
           ? { ...t, todo: todoText, details: editDetails }
           : t,
       ),
     );
+
     setSelectedTodo({ ...selectedTodo, todo: todoText, details: editDetails });
     setIsEditing(false);
   }
